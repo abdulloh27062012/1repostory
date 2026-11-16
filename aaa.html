@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="uz" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apple (O'zbekiston) - Rasmiy veb-sayt</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"SF Pro Text"', 'Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        apple: {
+                            bg: '#fbfbfd',
+                            dark: '#000000',
+                            cardDark: '#161617',
+                            grayText: '#86868b',
+                            blue: '#0071e3',
+                            blueHover: '#0077ed',
+                            border: '#d2d2d7'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", sans-serif;
+            background-color: #fbfbfd;
+            color: #1d1d1f;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .glass-nav {
+            background-color: rgba(22, 22, 23, 0.82);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+        }
+
+        .titanium-gradient {
+            background: linear-gradient(135deg, #f5f5f7 0%, #a19d94 45%, #5c5852 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .titanium-glow {
+            box-shadow: 0 0 90px rgba(196, 188, 174, 0.25);
+        }
+
+        .oled-glow {
+            box-shadow: 0 25px 70px -15px rgba(59, 130, 246, 0.4), 0 0 45px rgba(168, 85, 247, 0.3);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-[#fbfbfd] text-[#1d1d1f]">
+
+    <!-- ==========================================
+         NAVIGATION BAR
+    =========================================== -->
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 glass-nav text-white/80 transition-colors duration-300">
+        <div class="max-w-[1024px] mx-auto px-4 sm:px-6 h-11 flex items-center justify-between text-xs font-normal tracking-tight">
+            <!-- Apple Logo -->
+            <a href="#" class="text-white hover:opacity-85 transition-opacity p-2 -ml-2" aria-label="Apple Bosh sahifa">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 170 170">
+                    <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.13-1.9-14.34-6.08-3.69-3.03-7.61-7.82-11.77-14.37-5.14-7.95-9.35-17.13-12.63-27.54-3.28-10.41-4.92-20.37-4.92-29.88 0-11.31 2.83-20.73 8.49-28.25 5.66-7.52 12.79-11.4 21.39-11.63 4.46 0 9.63 1.38 15.51 4.12 5.88 2.75 9.65 4.18 11.31 4.29 1.34 0 5.51-1.63 12.5-4.88 6.99-3.26 12.89-4.63 17.71-4.12 13.18 1.06 23.09 6.24 29.74 15.53-11.79 7.16-17.56 16.98-17.32 29.47.22 9.83 3.88 18 10.97 24.51 4.86 4.53 10.59 7.45 17.18 8.76-1.45 4.45-3.08 8.72-4.88 12.81zM119.22 31.9c0 7.77-2.84 15.04-8.52 21.8-6.85 8.01-15.13 12.64-24.13 11.91-.14-.96-.22-1.99-.22-3.09 0-7.46 3.24-15.44 9.01-21.97 2.88-3.3 6.54-6.05 10.98-8.24 4.43-2.18 8.63-3.39 12.59-3.62.19 1.11.29 2.18.29 3.21z"/>
+                </svg>
+            </a>
+
+            <!-- Nav Links -->
+            <nav class="hidden md:flex items-center space-x-7">
+                <a href="#store-grid" class="hover:text-white transition-colors">Do'kon</a>
+                <a href="#mac-hero" class="hover:text-white transition-colors">Mac</a>
+                <a href="#ipad-hero" class="hover:text-white transition-colors">iPad</a>
+                <a href="#iphone-hero" class="hover:text-white transition-colors">iPhone</a>
+                <a href="#store-grid" class="hover:text-white transition-colors">Watch</a>
+                <a href="#store-grid" class="hover:text-white transition-colors">AirPods</a>
+                <a href="#tv-carousel" class="hover:text-white transition-colors">TV va Uy</a>
+                <a href="#store-grid" class="hover:text-white transition-colors">Aksessuarlar</a>
+            </nav>
+
+            <!-- Action Buttons -->
+            <div class="flex items-center space-x-3 sm:space-x-5">
+                <button id="search-btn" class="text-white/80 hover:text-white transition-colors p-2" aria-label="Qidiruv">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 104.5 4.5a7.5 7.5 0 0012.15 12.15z"/>
+                    </svg>
+                </button>
+                <button id="bag-btn" class="relative text-white/80 hover:text-white transition-colors p-2" aria-label="Savatcha">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007z"/>
+                    </svg>
+                    <span id="bag-badge" class="hidden absolute top-1 right-0.5 bg-white text-black text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow">0</span>
+                </button>
+                <button id="mobile-menu-btn" class="md:hidden text-white/80 hover:text-white transition-colors p-2 -mr-2" aria-label="Menyu">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Search Overlay -->
+        <div id="search-overlay" class="hidden bg-[#161617] border-t border-white/10 transition-all duration-300">
+            <div class="max-w-[680px] mx-auto px-6 py-8">
+                <div class="flex items-center space-x-3 border-b border-white/20 pb-3">
+                    <svg class="w-5 h-5 text-white/50" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 104.5 4.5a7.5 7.5 0 0012.15 12.15z"/>
+                    </svg>
+                    <input id="search-input" type="text" placeholder="apple.com saytidan qidirish..." class="w-full bg-transparent text-white text-lg sm:text-xl outline-none placeholder-white/40">
+                    <button id="close-search" class="text-white/60 hover:text-white text-sm px-2 py-1">Yopish</button>
+                </div>
+                <div class="mt-6">
+                    <p class="text-xs text-white/50 uppercase tracking-wider mb-3">Tezkor havolalar</p>
+                    <ul class="space-y-2.5 text-sm text-white/90">
+                        <li><button onclick="openProductModal('iphone16pro')" class="hover:text-[#2997ff] flex items-center space-x-2"><span>→</span><span>iPhone 16 Pro Titanium</span></button></li>
+                        <li><button onclick="openProductModal('macbookpro')" class="hover:text-[#2997ff] flex items-center space-x-2"><span>→</span><span>MacBook Pro M4</span></button></li>
+                        <li><button onclick="openProductModal('ipadpro')" class="hover:text-[#2997ff] flex items-center space-x-2"><span>→</span><span>iPad Pro Ultra Retina XDR</span></button></li>
+                        <li><button onclick="openProductModal('watch10')" class="hover:text-[#2997ff] flex items-center space-x-2"><span>→</span><span>Apple Watch Series 10</span></button></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-menu" class="fixed inset-0 z-40 bg-[#161617] text-white hidden flex-col pt-16 px-8 pb-8">
+        <button id="close-mobile-menu" class="absolute top-3 right-4 p-2 text-white/80 hover:text-white">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+        </button>
+        <nav class="flex flex-col space-y-4 text-2xl font-semibold tracking-tight mt-4">
+            <a href="#store-grid" class="mobile-link hover:text-[#2997ff]">Do'kon</a>
+            <a href="#mac-hero" class="mobile-link hover:text-[#2997ff]">Mac</a>
+            <a href="#ipad-hero" class="mobile-link hover:text-[#2997ff]">iPad</a>
+            <a href="#iphone-hero" class="mobile-link hover:text-[#2997ff]">iPhone</a>
+            <a href="#store-grid" class="mobile-link hover:text-[#2997ff]">Watch</a>
+            <a href="#store-grid" class="mobile-link hover:text-[#2997ff]">AirPods</a>
+            <a href="#tv-carousel" class="mobile-link hover:text-[#2997ff]">TV va Uy</a>
+        </nav>
+    </div>
+
+    <!-- Promo Banner -->
+    <div class="pt-11 bg-[#1d1d1f] text-white/90 text-xs text-center py-3 px-4 border-b border-white/10">
+        <p>Yangi Apple qurilmalarini 12 oygacha foizsiz bo'lib to'lash imkoniyati bilan xarid qiling. <button onclick="openProductModal('iphone16pro')" class="text-[#2997ff] hover:underline ml-1">Batafsil &gt;</button></p>
+    </div>
+
+    <main>
+        <!-- ==========================================
+             HERO 1: iPhone 16 Pro
+        =========================================== -->
+        <section id="iphone-hero" class="relative w-full min-h-[640px] sm:min-h-[720px] bg-black text-white flex flex-col items-center justify-between pt-14 sm:pt-16 pb-10 px-4 overflow-hidden border-b-[12px] border-[#fbfbfd]">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#b5aba0]/15 rounded-full blur-[120px] pointer-events-none"></div>
+
+            <div class="relative z-10 text-center max-w-2xl mx-auto reveal active">
+                <h1 class="text-4xl sm:text-6xl font-semibold tracking-tight mb-2">iPhone 16 Pro</h1>
+                <p class="text-xl sm:text-2xl font-normal titanium-gradient tracking-tight mb-6">Salom, Apple Intelligence. Titan qudrati.</p>
+                <div class="flex items-center justify-center gap-4">
+                    <button onclick="openLearnMore('iPhone 16 Pro', 'Aerokosmik darajadagi 5-sinf titan korpusi, yangi Kamera boshqaruvi tugmasi, 4K 120 kadr/s Dolby Vision video va A18 Pro chipi.')" class="bg-[#0071e3] hover:bg-[#0077ed] text-white text-sm sm:text-base font-medium px-5 py-2.5 rounded-full transition transform hover:scale-[1.02]">
+                        Batafsil
+                    </button>
+                    <button onclick="openProductModal('iphone16pro')" class="border border-[#2997ff] text-[#2997ff] hover:bg-[#2997ff] hover:text-white text-sm sm:text-base font-medium px-5 py-2.5 rounded-full transition">
+                        Sotib olish
+                    </button>
+                </div>
+            </div>
+
+            <div class="relative z-10 mt-10 w-full max-w-[680px] flex justify-center items-end reveal active">
+                <div class="relative w-[280px] sm:w-[320px] h-[360px] sm:h-[410px] rounded-t-[48px] p-[5px] bg-gradient-to-b from-[#d4ccc0] via-[#8c857b] to-[#2c2a27] titanium-glow shadow-2xl">
+                    <div class="w-full h-full bg-[#09090b] rounded-t-[43px] p-3 relative overflow-hidden flex flex-col items-center">
+                        <div class="w-24 h-6 bg-black rounded-full mt-1.5 flex items-center justify-end px-2.5 border border-white/5 z-20">
+                            <div class="w-2.5 h-2.5 rounded-full bg-[#1a1f36] ring-1 ring-blue-500/30"></div>
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-[#1c1917] via-[#443d34] to-[#d6cbbd] opacity-80"></div>
+                        <div class="relative z-10 mt-16 text-center">
+                            <span class="text-xs uppercase tracking-[0.25em] text-stone-300/80 font-medium">Desert Titanium</span>
+                            <div class="mt-2 text-3xl sm:text-4xl font-semibold tracking-tighter text-white/95">Pro.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             HERO 2: MacBook Pro M4
+        =========================================== -->
+        <section id="mac-hero" class="relative w-full min-h-[620px] sm:min-h-[690px] bg-[#f5f5f7] text-[#1d1d1f] flex flex-col items-center justify-between pt-14 sm:pt-16 pb-12 px-4 overflow-hidden border-b-[12px] border-white">
+            <div class="relative z-10 text-center max-w-2xl mx-auto reveal">
+                <span class="text-xs font-semibold uppercase tracking-widest text-[#bf4800] mb-1 block">Yangi</span>
+                <h2 class="text-4xl sm:text-6xl font-semibold tracking-tight mb-2">MacBook Pro</h2>
+                <p class="text-xl sm:text-2xl text-[#1d1d1f]/80 font-normal tracking-tight mb-6">M4 chipi bilan aql bovar qilmas tezlik.</p>
+                <div class="flex items-center justify-center gap-4">
+                    <button onclick="openLearnMore('MacBook Pro M4', 'Yangi M4, M4 Pro va M4 Max chiplari, 24 soatgacha batareya quvvati va yorqin Liquid Retina XDR displeyi.')" class="bg-[#0071e3] hover:bg-[#0077ed] text-white text-sm sm:text-base font-medium px-5 py-2.5 rounded-full transition transform hover:scale-[1.02]">
+                        Batafsil
+                    </button>
+                    <button onclick="openProductModal('macbookpro')" class="border border-[#0071e3] text-[#0071e3] hover:bg-[#0071e3] hover:text-white text-sm sm:text-base font-medium px-5 py-2.5 rounded-full transition">
+                        Sotib olish
+                    </button>
+                </div>
+            </div>
+
+            <div class="relative z-10 mt-10 w-full max-w-[760px] flex flex-col items-center reveal">
+                <div class="w-[88%] sm:w-[560px] h-[230px] sm:h-[310px] bg-[#141416] rounded-t-2xl p-2.5 shadow-2xl border border-gray-300 relative overflow-hidden">
+                    <div class="w-full h-full rounded-lg bg-gradient-to-br from-[#020617] via-[#1e1b4b] to-[#0f766e] relative overflow-hidden flex items-center justify-center">
+                        <div class="w-56 h-56 rounded-full bg-gradient-to-tr from-blue-500/40 via-purple-500/40 to-emerald-400/40 blur-xl animate-pulse"></div>
+                        <span class="relative z-10 text-white/90 font-semibold text-2xl sm:text-3xl tracking-tight">M4</span>
+                    </div>
+                </div>
+                <div class="w-[98%] sm:w-[640px] h-4 bg-gradient-to-b from-[#e2e2e5] via-[#c7c7cc] to-[#8e8e93] rounded-b-xl shadow-lg flex justify-center">
+                    <div class="w-24 h-1.5 bg-[#a1a1a6] rounded-b-md"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             HERO 3: iPad Pro
+        =========================================== -->
+        <section id="ipad-hero" class="relative w-full min-h-[620px] sm:min-h-[680px] bg-black text-white flex flex-col items-center justify-between pt-14 sm:pt-16 pb-12 px-4 overflow-hidden border-b-[12px] border-[#fbfbfd]">
+            <div class="relative z-10 text-center max-w-2xl mx-auto reveal">
+                <h2 class="text-4xl sm:text-6xl font-semibold tracking-tight mb-2">iPad Pro</h2>
+                <p class="text-xl sm:text-2xl text-white/85 font-normal tracking-tight mb-6">Aql bovar qilmas darajada yupqa. Cheksiz qudrat.</p>
+                <div class="flex items-center justify-center gap-4">
+                    <button onclick="openLearnMore('iPad Pro M4', 'Apple tarixidagi eng yupqa qurilma (5.1 mm). Tandem OLED texnologiyasiga ega Ultra Retina XDR displey.')" class="bg-[#0071e3] hover:bg-[#0077ed] text-white text-sm sm:text-base font-medium px-5 py-2.5 rounded-full transition transform hover:scale-[1.02]">
+                        Batafsil
+                    </button>
+                    <button onclick="openProductModal('ipadpro')" class="border border-[#2997ff] text-[#2997ff] hover:bg-[#2997ff] hover:text-white text-sm sm:text-base font-medium px-5 py-2.5 rounded-full transition">
+                        Sotib olish
+                    </button>
+                </div>
+            </div>
+
+            <div class="relative z-10 mt-10 w-full max-w-[700px] flex justify-center reveal">
+                <div class="w-[92%] sm:w-[540px] h-[270px] sm:h-[330px] rounded-[24px] p-2 bg-[#27272a] border border-white/15 oled-glow relative">
+                    <div class="w-full h-full rounded-[18px] bg-black overflow-hidden relative flex items-center justify-center">
+                        <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,#3b82f6_0%,transparent_50%),radial-gradient(circle_at_75%_70%,#d946ef_0%,transparent_50%)] opacity-85"></div>
+                        <div class="relative z-10 text-center px-4">
+                            <p class="text-xs uppercase tracking-[0.3em] text-white/80 mb-1">Ultra Retina XDR</p>
+                            <h3 class="text-3xl sm:text-4xl font-bold tracking-tight text-white drop-shadow">Tandem OLED</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             PRODUCTS CAROUSEL / SLIDER (YANGI)
+        =========================================== -->
+        <section class="py-16 bg-[#f5f5f7] overflow-hidden">
+            <div class="max-w-[1280px] mx-auto px-4 mb-8 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
+                <div>
+                    <span class="text-xs font-semibold uppercase tracking-widest text-[#0071e3] mb-1 block">So'nggi yangiliklar</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-[#1d1d1f]">Apple Mahsulotlari Karuseli</h2>
+                    <p class="text-sm text-[#86868b] mt-1">Eng so'nggi texnologiyalar va flagman qurilmalar bilan tanishing.</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button id="prod-prev" class="w-10 h-10 rounded-full bg-white shadow hover:bg-gray-100 flex items-center justify-center text-[#1d1d1f] font-bold text-lg transition">‹</button>
+                    <button id="prod-next" class="w-10 h-10 rounded-full bg-white shadow hover:bg-gray-100 flex items-center justify-center text-[#1d1d1f] font-bold text-lg transition">›</button>
+                </div>
+            </div>
+
+            <div class="max-w-[1280px] mx-auto px-4">
+                <div class="overflow-hidden no-scrollbar" id="products-slider-container">
+                    <div id="products-slider-track" class="flex gap-6 transition-transform duration-500 ease-out">
+                        <!-- Card 1 -->
+                        <div class="min-w-[280px] sm:min-w-[340px] bg-white rounded-3xl p-6 shadow-sm border border-gray-200/80 flex flex-col justify-between">
+                            <div>
+                                <span class="text-[11px] font-semibold text-[#bf4800] uppercase tracking-wider">Yangi</span>
+                                <h3 class="text-xl font-bold text-[#1d1d1f] mt-1">iPhone 16 Pro</h3>
+                                <p class="text-xs text-gray-500 mt-1">Titan korpus va A18 Pro chipi.</p>
+                            </div>
+                            <div class="my-6 h-40 bg-[#fbfbfd] rounded-2xl flex items-center justify-center border border-gray-100">
+                                <span class="text-4xl font-extrabold text-stone-700">16 Pro</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm font-bold text-[#1d1d1f]">$999 dan</span>
+                                <button onclick="openProductModal('iphone16pro')" class="bg-[#0071e3] hover:bg-[#0077ed] text-white text-xs font-semibold px-4 py-2 rounded-full transition">Sotib olish</button>
+                            </div>
+                        </div>
+                        <!-- Card 2 -->
+                        <div class="min-w-[280px] sm:min-w-[340px] bg-white rounded-3xl p-6 shadow-sm border border-gray-200/80 flex flex-col justify-between">
+                            <div>
+                                <span class="text-[11px] font-semibold text-[#0071e3] uppercase tracking-wider">Kuchli qudrat</span>
+                                <h3 class="text-xl font-bold text-[#1d1d1f] mt-1">MacBook Pro 14"</h3>
+                                <p class="text-xs text-gray-500 mt-1">M4 chipi va 24 soatgacha batareya.</p>
+                            </div>
+                            <div class="my-6 h-40 bg-[#fbfbfd] rounded-2xl flex items-center justify-center border border-gray-100">
+                                <span class="text-4xl font-extrabold text-indigo-900">M4 Pro</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm font-bold text-[#1d1d1f]">$1,599 dan</span>
+                                <button onclick="openProductModal('macbookpro')" class="bg-[#0071e3] hover:bg-[#0077ed] text-white text-xs font-semibold px-4 py-2 rounded-full transition">Sotib olish</button>
+                            </div>
+                        </div>
+                        <!-- Card 3 -->
+                        <div class="min-w-[280px] sm:min-w-[340px] bg-white rounded-3xl p-6 shadow-sm border border-gray-200/80 flex flex-col justify-between">
+                            <div>
+                                <span class="text-[11px] font-semibold text-[#bf4800] uppercase tracking-wider">Ajoyib ingichka</span>
+                                <h3 class="text-xl font-bold text-[#1d1d1f] mt-1">iPad Pro 11"</h3>
+                                <p class="text-xs text-gray-500 mt-1">Ultra Retina XDR Tandem OLED.</p>
+                            </div>
+                            <div class="my-6 h-40 bg-[#fbfbfd] rounded-2xl flex items-center justify-center border border-gray-100">
+                                <span class="text-4xl font-extrabold text-violet-700">OLED</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm font-bold text-[#1d1d1f]">$999 dan</span>
+                                <button onclick="openProductModal('ipadpro')" class="bg-[#0071e3] hover:bg-[#0077ed] text-white text-xs font-semibold px-4 py-2 rounded-full transition">Sotib olish</button>
+                            </div>
+                        </div>
+                        <!-- Card 4 -->
+                        <div class="min-w-[280px] sm:min-w-[340px] bg-white rounded-3xl p-6 shadow-sm border border-gray-200/80 flex flex-col justify-between">
+                            <div>
+                                <span class="text-[11px] font-semibold text-[#0071e3] uppercase tracking-wider">Salomatlik</span>
+                                <h3 class="text-xl font-bold text-[#1d1d1f] mt-1">Apple Watch Series 10</h3>
+                                <p class="text-xs text-gray-500 mt-1">Eng yupqa korpus va keng ekran.</p>
+                            </div>
+                            <div class="my-6 h-40 bg-[#fbfbfd] rounded-2xl flex items-center justify-center border border-gray-100">
+                                <span class="text-4xl font-extrabold text-orange-600">S10</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm font-bold text-[#1d1d1f]">$399 dan</span>
+                                <button onclick="openProductModal('watch10')" class="bg-[#0071e3] hover:bg-[#0077ed] text-white text-xs font-semibold px-4 py-2 rounded-full transition">Sotib olish</button>
+                            </div>
+                        </div>
+                        <!-- Card 5 -->
+                        <div class="min-w-[280px] sm:min-w-[340px] bg-white rounded-3xl p-6 shadow-sm border border-gray-200/80 flex flex-col justify-between">
+                            <div>
+                                <span class="text-[11px] font-semibold text-[#bf4800] uppercase tracking-wider">Audio</span>
+                                <h3 class="text-xl font-bold text-[#1d1d1f] mt-1">AirPods Pro 2</h3>
+                                <p class="text-xs text-gray-500 mt-1">Faol shovqinni bosish va H2 chipi.</p>
+                            </div>
+                            <div class="my-6 h-40 bg-[#fbfbfd] rounded-2xl flex items-center justify-center border border-gray-100">
+                                <span class="text-4xl font-extrabold text-blue-600">H2</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm font-bold text-[#1d1d1f]">$249</span>
+                                <button onclick="openProductModal('airpodspro2')" class="bg-[#0071e3] hover:bg-[#0077ed] text-white text-xs font-semibold px-4 py-2 rounded-full transition">Sotib olish</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             PRODUCTS GRID
+        =========================================== -->
+        <section id="store-grid" class="max-w-[1440px] mx-auto px-0 sm:px-3 py-3">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <!-- Watch -->
+                <div class="bg-[#f5f5f7] text-[#1d1d1f] min-h-[540px] flex flex-col items-center justify-between pt-12 pb-8 px-6 text-center relative overflow-hidden reveal">
+                    <div>
+                        <h3 class="text-3xl font-bold tracking-tight mb-1">WATCH</h3>
+                        <p class="text-xs font-bold tracking-[0.2em] text-[#bf4800] uppercase mb-2">SERIES 10</p>
+                        <p class="text-lg text-[#1d1d1f]/80 mb-5">Eng katta ekran. Eng yupqa korpus.</p>
+                        <div class="flex items-center justify-center gap-3">
+                            <button onclick="openLearnMore('Apple Watch Series 10', 'Keng burchakli OLED ekran, suv harorati va chuqurlik sensorlari hamda 30 daqiqada 80% tezkor quvvatlanish.')" class="bg-[#0071e3] hover:bg-[#0077ed] text-white text-xs sm:text-sm font-medium px-4 py-2 rounded-full transition">Batafsil</button>
+                            <button onclick="openProductModal('watch10')" class="border border-[#0071e3] text-[#0071e3] hover:bg-[#0071e3] hover:text-white text-xs sm:text-sm font-medium px-4 py-2 rounded-full transition">Sotib olish</button>
+                        </div>
+                    </div>
+                    <div class="mt-8 relative flex items-center justify-center">
+                        <div class="w-36 h-44 rounded-[36px] bg-gradient-to-tr from-zinc-900 via-zinc-700 to-zinc-400 p-1.5 shadow-xl">
+                            <div class="w-full h-full bg-black rounded-[30px] flex flex-col items-center justify-center relative overflow-hidden">
+                                <div class="w-24 h-24 rounded-full border-4 border-amber-500/80 flex items-center justify-center">
+                                    <span class="text-white font-semibold text-xl">10:09</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AirPods -->
+                <div class="bg-black text-white min-h-[540px] flex flex-col items-center justify-between pt-12 pb-8 px-6 text-center relative overflow-hidden reveal">
+                    <div>
+                        <h3 class="text-3xl sm:text-4xl font-semibold tracking-tight mb-2">AirPods Pro 2</h3>
+                        <p class="text-lg text-white/80 mb-5">Faol shovqinni bosish va eshitish salomatligi.</p>
+                        <div class="flex items-center justify-center gap-3">
+                            <button onclick="openLearnMore('AirPods Pro 2', 'H2 chipi, 2 baravar kuchliroq ANC va USB-C MagSafe quvvatlash qutisi.')" class="bg-[#0071e3] hover:bg-[#0077ed] text-white text-xs sm:text-sm font-medium px-4 py-2 rounded-full transition">Batafsil</button>
+                            <button onclick="openProductModal('airpodspro2')" class="border border-[#2997ff] text-[#2997ff] hover:bg-[#2997ff] hover:text-white text-xs sm:text-sm font-medium px-4 py-2 rounded-full transition">Sotib olish</button>
+                        </div>
+                    </div>
+                    <div class="mt-8 relative flex items-center justify-center">
+                        <div class="w-44 h-36 rounded-[36px] bg-gradient-to-b from-white to-gray-200 shadow-2xl flex flex-col items-center justify-center relative">
+                            <div class="w-full h-[1px] bg-gray-300 absolute top-11"></div>
+                            <div class="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_#10b981] mt-4"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             APPLE TV+ CAROUSEL
+        =========================================== -->
+        <section id="tv-carousel" class="py-12 bg-white overflow-hidden">
+            <div class="max-w-[1200px] mx-auto px-4 mb-6 flex items-center justify-between">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-[#1d1d1f]">Apple TV+ Premyeralari</h2>
+                    <p class="text-sm text-[#86868b]">Faqat Apple TV+ platformasida eksklyuziv filmlar va seriallar.</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button id="prev-slide" class="w-9 h-9 rounded-full bg-[#f5f5f7] hover:bg-gray-200 flex items-center justify-center text-[#1d1d1f] transition">‹</button>
+                    <button id="next-slide" class="w-9 h-9 rounded-full bg-[#f5f5f7] hover:bg-gray-200 flex items-center justify-center text-[#1d1d1f] transition">›</button>
+                </div>
+            </div>
+
+            <div class="relative max-w-[1200px] mx-auto px-4">
+                <div id="carousel-viewport" class="overflow-hidden rounded-2xl shadow-xl">
+                    <div id="carousel-track" class="flex transition-transform duration-700 ease-out">
+                        <div class="min-w-full h-[380px] sm:h-[500px] relative bg-gradient-to-r from-[#090d16] via-[#172554] to-[#1e1b4b] text-white flex flex-col justify-end p-8 sm:p-14">
+                            <div class="relative z-10 max-w-xl">
+                                <span class="inline-block text-xs font-bold uppercase tracking-widest bg-white/15 backdrop-blur px-3 py-1 rounded-full mb-3">Ilmiy-fantastika</span>
+                                <h3 class="text-3xl sm:text-5xl font-bold tracking-tight mb-2">SEVERANCE</h3>
+                                <p class="text-sm sm:text-lg text-white/80 mb-6">Ish va shaxsiy hayot xotiralari butunlay ajratilgan sirli korporatsiya.</p>
+                                <button onclick="showToast('Apple TV+ treyleri ishga tushirildi')" class="bg-white text-black hover:bg-gray-100 font-semibold text-sm px-6 py-3 rounded-full inline-flex items-center gap-2 transition"><span>▶</span><span>Hozir tomosha qilish</span></button>
+                            </div>
+                        </div>
+                        <div class="min-w-full h-[380px] sm:h-[500px] relative bg-gradient-to-r from-[#1c1917] via-[#451a03] to-[#78350f] text-white flex flex-col justify-end p-8 sm:p-14">
+                            <div class="relative z-10 max-w-xl">
+                                <span class="inline-block text-xs font-bold uppercase tracking-widest bg-white/15 backdrop-blur px-3 py-1 rounded-full mb-3">Drama • Triller</span>
+                                <h3 class="text-3xl sm:text-5xl font-bold tracking-tight mb-2">SILO</h3>
+                                <p class="text-sm sm:text-lg text-white/80 mb-6">Yer ostidagi ulkan bunkerdagi omon qolish va haqiqatni izlash.</p>
+                                <button onclick="showToast('Apple TV+ treyleri ishga tushirildi')" class="bg-white text-black hover:bg-gray-100 font-semibold text-sm px-6 py-3 rounded-full inline-flex items-center gap-2 transition"><span>▶</span><span>Hozir tomosha qilish</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#f5f5f7] text-[#6e6e73] text-xs border-t border-[#d2d2d7]">
+        <div class="max-w-[1024px] mx-auto px-4 sm:px-6 py-8">
+            <div class="space-y-2.5 pb-6 border-b border-[#d2d2d7] leading-relaxed">
+                <p>1. Trade-in qiymati topshirilayotgan qurilmaning holati va konfiguratsiyasiga qarab farq qiladi.</p>
+                <p>2. Apple Intelligence barcha yangi qurilmalarda bepul dasturiy ta'minot yangilanishi sifatida taqdim etiladi.</p>
+            </div>
+            <div class="pt-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                <p>Mualliflik huquqi © 2026 Apple Inc. Barcha huquqlar himoyalangan.</p>
+                <div class="flex items-center gap-4">
+                    <a href="#" class="hover:underline">Maxfiylik siyosati</a><span>|</span><a href="#" class="hover:underline">Foydalanish shartlari</a><span>|</span><span class="text-[#1d1d1f] font-medium">O'zbekiston</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- PRODUCT MODAL -->
+    <div id="product-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative">
+            <button id="close-product-modal" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-600">✕</button>
+            <span class="text-xs font-semibold uppercase tracking-wider text-[#bf4800]">Konfiguratsiya</span>
+            <h3 id="modal-product-title" class="text-2xl sm:text-3xl font-bold text-[#1d1d1f] mt-1">iPhone 16 Pro</h3>
+            <p id="modal-product-desc" class="text-sm text-gray-500 mt-1">Titan korpus va A18 Pro chipi.</p>
+
+            <div class="mt-6">
+                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2.5">Rangni tanlang: <span id="selected-color-name" class="text-[#1d1d1f]">Desert Titanium</span></label>
+                <div id="modal-colors" class="flex items-center gap-3"></div>
+            </div>
+
+            <div class="mt-6">
+                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2.5">Xotira / Variantni tanlang:</label>
+                <div id="modal-storages" class="grid grid-cols-2 gap-2.5"></div>
+            </div>
+
+            <div class="mt-8 pt-5 border-t border-gray-100 flex items-center justify-between">
+                <div>
+                    <span class="text-xs text-gray-500 block">Jami narx</span>
+                    <span id="modal-price" class="text-2xl font-bold text-[#1d1d1f]">$999</span>
+                </div>
+                <button id="add-to-bag-confirm" class="bg-[#0071e3] hover:bg-[#0077ed] text-white font-medium px-6 py-3 rounded-full shadow-lg transition">Savatchaga qo'shish</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- INFO MODAL -->
+    <div id="info-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative">
+            <button onclick="closeInfoModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-600">✕</button>
+            <h3 id="info-modal-title" class="text-2xl font-bold text-[#1d1d1f] mb-3">Mahsulot haqida</h3>
+            <p id="info-modal-body" class="text-sm text-gray-600 leading-relaxed mb-6"></p>
+            <button onclick="closeInfoModal()" class="w-full bg-[#1d1d1f] text-white font-medium py-2.5 rounded-full hover:bg-black transition">Tushunarli</button>
+        </div>
+    </div>
+
+    <!-- BAG DRAWER -->
+    <div id="bag-drawer-backdrop" class="fixed inset-0 z-50 hidden bg-black/40 backdrop-blur-xs transition-opacity">
+        <div id="bag-drawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-white shadow-2xl flex flex-col justify-between p-6 transform translate-x-full transition-transform duration-300">
+            <div class="flex items-center justify-between pb-4 border-b border-gray-200">
+                <h3 class="text-xl font-bold text-[#1d1d1f]">Savatcha</h3>
+                <button id="close-bag-btn" class="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-600">✕</button>
+            </div>
+            <div id="bag-items-container" class="flex-1 overflow-y-auto py-4 space-y-4"></div>
+            <div class="pt-4 border-t border-gray-200">
+                <div class="flex items-center justify-between text-base font-semibold mb-4">
+                    <span>Jami summa:</span>
+                    <span id="bag-total-price" class="text-xl">$0</span>
+                </div>
+                <button id="checkout-btn" class="w-full bg-[#0071e3] hover:bg-[#0077ed] disabled:bg-gray-300 text-white font-medium py-3 rounded-full transition">Buyurtmani rasmiylashtirish</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST -->
+    <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-[#1d1d1f] text-white text-sm font-medium px-5 py-3 rounded-full shadow-xl opacity-0 pointer-events-none transition-all duration-300">Xabar</div>
+
+    <script>
+        const PRODUCTS = {
+            iphone16pro: { name: 'iPhone 16 Pro', desc: 'Titan dizayn va A18 Pro chipi.', colors: [{ name: 'Desert Titanium', hex: '#c5b49e' }, { name: 'Natural Titanium', hex: '#9a9892' }, { name: 'Black Titanium', hex: '#272729' }], options: [{ label: '128 GB', price: 999 }, { label: '256 GB', price: 1099 }] },
+            macbookpro: { name: 'MacBook Pro 14"', desc: 'M4 chipi va Liquid Retina XDR.', colors: [{ name: 'Space Black', hex: '#1d1d1f' }, { name: 'Silver', hex: '#e3e4e6' }], options: [{ label: '512 GB SSD', price: 1599 }, { label: '1 TB SSD', price: 1799 }] },
+            ipadpro: { name: 'iPad Pro 11"', desc: 'Ultra Retina XDR Tandem OLED.', colors: [{ name: 'Space Black', hex: '#232325' }, { name: 'Silver', hex: '#dcdde0' }], options: [{ label: '256 GB Wi-Fi', price: 999 }, { label: '512 GB Wi-Fi', price: 1199 }] },
+            watch10: { name: 'Apple Watch Series 10', desc: 'Eng yupqa korpus va keng ekran.', colors: [{ name: 'Jet Black', hex: '#111111' }, { name: 'Silver', hex: '#e0e0e2' }], options: [{ label: '42 mm GPS', price: 399 }, { label: '46 mm GPS', price: 429 }] },
+            airpodspro2: { name: 'AirPods Pro 2', desc: 'H2 chipi va MagSafe qutisi.', colors: [{ name: 'Oq (Standard)', hex: '#ffffff' }], options: [{ label: 'USB-C versiyasi', price: 249 }] }
+        };
+
+        let cart = [];
+        let currentModalProduct = null, selectedColor = null, selectedOption = null;
+
+        document.getElementById('search-btn').onclick = () => document.getElementById('search-overlay').classList.toggle('hidden');
+        document.getElementById('close-search').onclick = () => document.getElementById('search-overlay').classList.add('hidden');
+        document.getElementById('mobile-menu-btn').onclick = () => { let m = document.getElementById('mobile-menu'); m.classList.remove('hidden'); m.classList.add('flex'); };
+        document.getElementById('close-mobile-menu').onclick = () => { let m = document.getElementById('mobile-menu'); m.classList.add('hidden'); m.classList.remove('flex'); };
+
+        function openProductModal(key) {
+            document.getElementById('search-overlay').classList.add('hidden');
+            let p = PRODUCTS[key]; if (!p) return;
+            currentModalProduct = p; selectedColor = p.colors[0]; selectedOption = p.options[0];
+            document.getElementById('modal-product-title').textContent = p.name;
+            document.getElementById('modal-product-desc').textContent = p.desc;
+            renderModal();
+            let modal = document.getElementById('product-modal'); modal.classList.remove('hidden'); modal.classList.add('flex');
+        }
+
+        function renderModal() {
+            document.getElementById('selected-color-name').textContent = selectedColor.name;
+            document.getElementById('modal-price').textContent = `$${selectedOption.price.toLocaleString()}`;
+            let cc = document.getElementById('modal-colors'); cc.innerHTML = '';
+            currentModalProduct.colors.forEach(c => {
+                let btn = document.createElement('button');
+                btn.className = `w-8 h-8 rounded-full border border-gray-300 transition-all ${c.name === selectedColor.name ? 'ring-2 ring-[#0071e3] ring-offset-2 scale-110' : 'opacity-80'}`;
+                btn.style.backgroundColor = c.hex;
+                btn.onclick = () => { selectedColor = c; renderModal(); };
+                cc.appendChild(btn);
+            });
+            let sc = document.getElementById('modal-storages'); sc.innerHTML = '';
+            currentModalProduct.options.forEach(o => {
+                let btn = document.createElement('button');
+                btn.className = `p-3 rounded-xl border text-left transition-all ${o.label === selectedOption.label ? 'border-[#0071e3] bg-blue-50/40 ring-1 ring-[#0071e3]' : 'border-gray-200'}`;
+                btn.innerHTML = `<div class="text-sm font-semibold">${o.label}</div><div class="text-xs text-gray-500">$${o.price}</div>`;
+                btn.onclick = () => { selectedOption = o; renderModal(); };
+                sc.appendChild(btn);
+            });
+        }
+
+        document.getElementById('close-product-modal').onclick = () => { let m = document.getElementById('product-modal'); m.classList.add('hidden'); m.classList.remove('flex'); };
+
+        document.getElementById('add-to-bag-confirm').onclick = () => {
+            if (!currentModalProduct) return;
+            cart.push({ uid: Date.now(), name: currentModalProduct.name, color: selectedColor.name, option: selectedOption.label, price: selectedOption.price });
+            updateCart();
+            document.getElementById('product-modal').classList.add('hidden');
+            document.getElementById('product-modal').classList.remove('flex');
+            showToast(`${currentModalProduct.name} savatchaga qo'shildi`);
+        };
+
+        const bagBackdrop = document.getElementById('bag-drawer-backdrop'), bagDrawer = document.getElementById('bag-drawer');
+        document.getElementById('bag-btn').onclick = () => { bagBackdrop.classList.remove('hidden'); setTimeout(() => bagDrawer.classList.remove('translate-x-full'), 10); };
+        function closeBag() { bagDrawer.classList.add('translate-x-full'); setTimeout(() => bagBackdrop.classList.add('hidden'), 300); }
+        document.getElementById('close-bag-btn').onclick = closeBag;
+        bagBackdrop.onclick = (e) => { if (e.target === bagBackdrop) closeBag(); };
+
+        function updateCart() {
+            let container = document.getElementById('bag-items-container'), totalEl = document.getElementById('bag-total-price'), badge = document.getElementById('bag-badge'), checkoutBtn = document.getElementById('checkout-btn');
+            if (cart.length > 0) { badge.textContent = cart.length; badge.classList.remove('hidden'); checkoutBtn.disabled = false; } else { badge.classList.add('hidden'); checkoutBtn.disabled = true; }
+            if (cart.length === 0) { container.innerHTML = `<div class="h-full flex flex-col items-center justify-center text-center text-gray-400 py-12"><p class="text-base font-medium text-gray-600 mb-1">Savatchangiz bo'sh</p></div>`; totalEl.textContent = '$0'; return; }
+            let total = 0; container.innerHTML = '';
+            cart.forEach(item => {
+                total += item.price;
+                let el = document.createElement('div');
+                el.className = 'flex items-center justify-between p-3.5 rounded-2xl bg-[#f5f5f7]';
+                el.innerHTML = `<div><h4 class="text-sm font-semibold">${item.name}</h4><p class="text-xs text-gray-500">${item.color} • ${item.option}</p><p class="text-sm font-medium mt-1">$${item.price}</p></div><button onclick="cart = cart.filter(i => i.uid !== ${item.uid}); updateCart();" class="text-xs text-[#0071e3] hover:underline">O'chirish</button>`;
+                container.appendChild(el);
+            });
+            totalEl.textContent = `$${total}`;
+        }
+
+        document.getElementById('checkout-btn').onclick = () => { cart = []; updateCart(); closeBag(); showToast('Buyurtmangiz muvaffaqiyatli qabul qilindi!'); };
+
+        function openLearnMore(title, text) {
+            document.getElementById('info-modal-title').textContent = title;
+            document.getElementById('info-modal-body').textContent = text;
+            let m = document.getElementById('info-modal'); m.classList.remove('hidden'); m.classList.add('flex');
+        }
+        function closeInfoModal() { let m = document.getElementById('info-modal'); m.classList.add('hidden'); m.classList.remove('flex'); }
+
+        let toastTimer;
+        function showToast(msg) {
+            let t = document.getElementById('toast'); t.textContent = msg; t.classList.remove('opacity-0', 'translate-y-2');
+            clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.add('opacity-0', 'translate-y-2'), 3000);
+        }
+
+        // Mahsulotlar karuseli (Slider) logikasi
+        let prodIndex = 0;
+        const prodTrack = document.getElementById('products-slider-track');
+        const maxProdIndex = 3; // Ko'rsatiladigan cardlar soniga qarab
+        document.getElementById('prod-next').onclick = () => {
+            prodIndex = prodIndex >= maxProdIndex ? 0 : prodIndex + 1;
+            prodTrack.style.transform = `translateX(-${prodIndex * 310}px)`;
+        };
+        document.getElementById('prod-prev').onclick = () => {
+            prodIndex = prodIndex <= 0 ? maxProdIndex : prodIndex - 1;
+            prodTrack.style.transform = `translateX(-${prodIndex * 310}px)`;
+        };
+
+        // Apple TV+ Karuseli
+        let currentSlide = 0;
+        const track = document.getElementById('carousel-track');
+        setInterval(() => { currentSlide = (currentSlide + 1) % 2; track.style.transform = `translateX(-${currentSlide * 100}%)`; }, 5000);
+        document.getElementById('next-slide').onclick = () => { currentSlide = (currentSlide + 1) % 2; track.style.transform = `translateX(-${currentSlide * 100}%)`; };
+        document.getElementById('prev-slide').onclick = () => { currentSlide = (currentSlide - 1 + 2) % 2; track.style.transform = `translateX(-${currentSlide * 100}%)`; };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
